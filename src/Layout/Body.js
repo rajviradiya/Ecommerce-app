@@ -1,10 +1,10 @@
 import React from 'react'
 import Rout from '../pages/Rout'
 
-const Body = () => {
+const Body = ({db,setDb}) => {
     return (
         <>
-            <Rout/>
+            <Rout db={db} setDb={setDb}/>
         </>
         )
 }

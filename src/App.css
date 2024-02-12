@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+* {
+  padding: 0px;
+  margin: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heronav{
+  background-color: #131921 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navsearchbtn{
+color: white !important;
+border: 1px solid white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navsearchbtn:hover{
+  color: black !important;
+  background-color:aliceblue;
+}
+
+
+/*Catagory Card*/
+.catagoryCard{
+  width: 100% !important;
+  height:300px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  background-color: rgb(255, 255, 255)  !important ;
+  border: 0px !important;
+}
+
+.Catcardimg{
+  width: 400px !important;
+  object-fit: contain;
+  height: 300px;
+  padding: 10px;
+}
+.Catcardbody{
+  padding: 50px !important;
+  background-color: white !important;
+}
+
+.Nav2{
+  background-color: #232f3e !important;
+}
+.nav2link{
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  text-decoration: none !important;
 }
