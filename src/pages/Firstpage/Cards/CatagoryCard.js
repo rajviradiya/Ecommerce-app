@@ -1,19 +1,22 @@
-import React from 'react'
+import { Rating } from '@mui/material'
+import React, { useEffect } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+
 export const CatagoryCard = ({ db, setDb }) => {
+
     return (
         <>
             {Array.isArray(db) ? (
-                db.map((val,index) => {
+                db.map((val, index) => {
                     return (
                         <>
                             <Card key={index} className='catagoryCard mt-4'>
-                               <Link to={`/productpage/:${val.id}`}><Card.Img  className='Catcardimg' variant="top" src={`${val.images[1]}`} /></Link> 
-                                <Card.Body className='Catcardbody'>
+                                <Link  to={`/productpage/${val.id}`}><Card.Img className='Catcardimg' variant="top" src={`${val.thumbnail}`} /></Link>
+                                <Card.Body  className='Catcardbody'>
                                     <Card.Title className='Catcardtitle'>{val.title}</Card.Title>
                                     <Card.Text>
-                                        {val.rating}
+                                    <Rating name="read-only" value={val.rating} readOnly />
                                     </Card.Text>
                                     <Card.Text className=' d-flex gap-1'>
                                         {/* <div>Deal</div><br/>

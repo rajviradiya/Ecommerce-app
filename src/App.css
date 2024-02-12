@@ -3,46 +3,76 @@
   margin: 0px;
 }
 
-.heronav{
+.heronav {
   background-color: #131921 !important;
 }
 
-.navsearchbtn{
-color: white !important;
-border: 1px solid white;
+.navsearchbtn {
+  color: white !important;
+  border: 1px solid white;
 }
 
-.navsearchbtn:hover{
+.navsearchbtn:hover {
   color: black !important;
-  background-color:aliceblue;
+  background-color: aliceblue;
 }
 
 
 /*Catagory Card*/
-.catagoryCard{
+.catagoryCard {
   width: 100% !important;
-  height:300px !important;
+  height: 300px !important;
   display: flex !important;
   flex-direction: row !important;
-  background-color: rgb(255, 255, 255)  !important ;
+  background-color: rgb(255, 255, 255) !important;
   border: 0px !important;
 }
 
-.Catcardimg{
+.Catcardimg {
   width: 400px !important;
   object-fit: contain;
   height: 300px;
   padding: 10px;
 }
-.Catcardbody{
+
+.Catcardbody {
   padding: 50px !important;
   background-color: white !important;
 }
 
-.Nav2{
+.Nav2 {
   background-color: #232f3e !important;
 }
-.nav2link{
+
+.nav2link {
   color: white;
   text-decoration: none !important;
+}
+
+/* Produc tpage */
+.productscarosal {
+  padding: 150px !important;
+}
+
+.produccarosalimg{
+  height:  400px !important;
+  width:  400px !important;
+}
+
+.produccarosalimg{
+  height:  500px;
+  object-fit: cover !important;
+}
+.productsbody {
+  padding: 200px !important;
+}
+
+.productdeals{
+  width: 50px;
+  background-color: rgb(234, 38, 38);
+  border: 1px solid  rgb(234, 38, 38);
+  border-radius: 10%;
+  text-align: center;
+  font-weight: 400 ;
+  color:white;
 }
