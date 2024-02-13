@@ -6,7 +6,7 @@ const HomeProductpage = ({db,setDb}) => {
 
     useEffect(() => {
         const newdata = db.filter((items) => {
-            return items.category === "home-decoration"
+            return items.category === "groceries"
         })
         setnewdb(newdata)
     },[])

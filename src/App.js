@@ -15,7 +15,7 @@ function App() {
     setLoading(false)
     getdata.data()
       .then((res) => {
-        setDb(res.data.products)
+        setDb(res.data)
         setLoading(true)
       })
       .catch((err) => {

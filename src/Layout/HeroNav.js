@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
+import Cart from '../pages/Cart/Cart';
 
 const HeroNav = ({ db, setDb }) => {
 
-    const [inputval,setInputval]= useState("")
+    const [products, setProducts] = useState([]);
+    const [inputval, setInputval] = useState("")
 
+    console.log(products, "search")
     useEffect(() => {
-        console.log(db, "search")
+        setProducts(db)
     })
 
     const handleInput = (element) => {
@@ -14,23 +17,20 @@ const HeroNav = ({ db, setDb }) => {
         )
     }
 
-    const handleSearch = ()=>{
-        const data = db.filter((val)=>{
-            return val.title.include(inputval)
+    const handleSearch = () => {
+        const data = products.filter((item) => {
+            return item.title.toLowerCase().includes(inputval)
         })
+        setDb(data)
+    }
 
-        console.log(data)
+    const handleOnclick = ()=>{
+      
     }
     return (
         <Navbar expand="lg" className="bg-body-tertiary heronav">
             <Container fluid>
                 <Navbar.Brand className=' text-white' href="#">Navbar scroll</Navbar.Brand>
-                <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll
-                >
-                </Nav>
                 <Form className="d-flex">
                     <Form.Control
                         type="search"
@@ -39,8 +39,11 @@ const HeroNav = ({ db, setDb }) => {
                         aria-label="Search"
                         onChange={(e) => { handleInput(e.target) }}
                     />
-                    <Button variant="outline-success" className='navsearchbtn' onClick={()=>{handleSearch()}}>Search</Button>
+                    <Button variant="outline-success" className='navsearchbtn' onClick={() => { handleSearch() }}>Search</Button>
                 </Form>
+                <div>
+                    <button onClick={()=>{handleOnclick()}}><i className="fa-solid fa-cart-shopping text-danger pe-4 "></i></button>
+                </div>
             </Container>
         </Navbar>
     )
