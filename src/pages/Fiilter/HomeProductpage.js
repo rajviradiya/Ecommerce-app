@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CatagoryCard } from '../Firstpage/Cards/CatagoryCard'
+import { CatagoryCard } from '../Firstpage/Component/CatagoryCard'
 
 const HomeProductpage = ({db,setDb}) => {
     const [newdb, setnewdb] = useState([])

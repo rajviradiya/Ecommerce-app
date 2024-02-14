@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
-import Cart from '../pages/Cart/Cart';
+import Cart from '../../pages/Cart/Cart';
 
 const HeroNav = ({ db, setDb }) => {
 

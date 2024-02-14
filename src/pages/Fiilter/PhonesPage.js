@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CatagoryCard } from '../Firstpage/Cards/CatagoryCard'
+import { CatagoryCard } from '../Firstpage/Component/CatagoryCard'
 import { Container } from 'react-bootstrap'
 
 const PhonesPage = ({ db, setDb }) => {

@@ -51,22 +51,24 @@
 
 /* Produc tpage */
 .productscarosal {
-  padding: 150px !important;
+  padding: 100px !important;
 }
 
-.produccarosalimg{
-  height:  400px !important;
-  width:  400px !important;
-}
-
-.produccarosalimg{
+.produccarosalimg img{
   height:  500px;
-  object-fit: cover !important;
-}
-.productsbody {
-  padding: 150px !important;
+  object-fit: contain !important;
 }
 
+.productsbody {
+  width: 550px;
+  padding: 100px 0px 100px 100px !important;
+}
+.productsbody2{
+  border: 0px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px gray;
+  padding: 40px 70px !important;
+}
 .productdeals{
   width: 50px;
   background-color: rgb(234, 38, 38);
@@ -92,14 +94,54 @@
 }
 
 .productpageli div img{
-  width: 50px;
+  width: 40px;
+}
+
+.productpagecarqty{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.productpagecarqty div {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.productpagecarqty div button{
+  width: 40px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.productpagecarqty div button:hover{
+  background-color: rgb(225, 213, 213);
+}
+.productpagecarqty div div{
+  width: 50px !important;
+  background-color:aliceblue ;
+  margin: 0px 9px ;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 0px;
+  box-shadow: 0px 0px 5px gray;
 }
 
 .productpagebtn{
-  width: 40%;
+  width: 200px;
   background-color: rgb(234, 133, 45);
   border:  0px solid white;
-  border-radius: 30PX;
+  border-radius: 3PX;
+  margin-top: 8px;
+  box-shadow: 0px 0px 5px gray;
+}
+
+.productpagebtn:hover{
+  opacity: 0.9;
 }
 
 /* Cart */
@@ -138,14 +180,19 @@
 
 
 .cartcardss{
-  width:72%;
+  width:1000px;
   height: 500px;
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
   overflow: scroll;
   border: 0px solid black;
   box-shadow: 0px 0px 6px gray;
   padding: 10px;
+}
+
+.cartcardss div{
+  width: 85%;
 }
 
 .cartcardss::-webkit-scrollbar{
@@ -165,11 +212,12 @@
 /* Cart card */
 
 .cartcard{
-  width: 1000px !important;
+  width: auto!important;
   height:  100px !important;
   display: flex;
   flex-direction: row;
   padding: 10px;
+  border: 0px;
 }
 
 .cartcardimg{
@@ -177,11 +225,16 @@
 }
 
 .cartcardbody{
+  width: 100% !important;
   display:  flex;
   justify-content: space-between;
   margin-left: 8%;
 }
 
+.cartcardbody p {
+  width: 230px;
+  overflow: hidden;
+}
 .cartcardbody div{
   width: 10% !important;
   display:  flex !important;

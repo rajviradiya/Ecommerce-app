@@ -1,7 +1,7 @@
 import { getdata } from "./Utils/axios"
 import { useEffect, useState } from 'react';
-import HeroNav from './Layout/HeroNav';
-import Body from './Layout/Body';
+import HeroNav from './Layout/Layout1/HeroNav';
+import Body from './Layout/Layout1/Body';
 
 function App() {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CatagoryCard } from './Cards/CatagoryCard'
+import { CatagoryCard } from './Component/CatagoryCard'
 import { Container } from 'react-bootstrap'
 
 const Firstpage = ({db,setDb}) => {

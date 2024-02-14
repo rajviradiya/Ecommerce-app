@@ -1,9 +1,26 @@
-import React from 'react'
-import CartCard from './Card/CartCard'
+import React, { useEffect, useState } from 'react'
+import CartCard from './Component/CartCard'
 import { Col, Container, Row } from 'react-bootstrap'
 
+import { getdata } from "../../Utils/axios"
 
 const Cart = () => {
+
+    const [cartdb, setcartdb] = useState([])
+    const [err, setErr] = useState("")
+
+    console.log(cartdb, "cart")
+
+    //get cart data
+    useEffect(() => {
+        getdata.cart().then((res) => {
+            setcartdb(res.data)
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [])
+
     return (
         <Container fluid className='p-0'>
             <Col className='cart p-0'>
@@ -17,12 +34,12 @@ const Cart = () => {
                 <Row className='carthead'>
                     <div>
                         <h1>Shopping Cart</h1>
-                        <h6>You Have 7 items in shoping cart</h6>
+                        <p>You Have <span>7</span> items in shoping cart</p>
                     </div>
                 </Row>
                 <Row className='cartcardss'>
                     <div>
-                            <CartCard />
+                        <CartCard data={cartdb} />
                     </div>
                 </Row>
                 <Row className='carttotal'>
