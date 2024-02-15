@@ -6,93 +6,165 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import { getdata } from '../../Utils/axios';
 
-const ProductPage = ({ db, setDb }) => {
+const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
     const [newdata, setNewdata] = useState([]);
-    const [counters, setCounters] = useState([]);
-    const dataid = useParams("");
+    const [addtocart, setAddtocart] = useState([])
 
-    console.log(newdata,"awewqedwqewqe")
+    const [counters, setCounters] = useState(0);
+    const [pageid, setpageId] = useState(1)
+
+    const { id } = useParams("");
     //pase detail page data using routing
     const navigate = useNavigate();
+
+    console.log(counters, "counter")
+    console.log(pageid, "newdata2")
 
     //set state using passed props 
     useEffect(() => {
         const data = db.filter((item) => {
-            return item.id == dataid.id
+            if (item.id == id) {
+                setpageId(item.id)
+            }
+            return item.id == id
         })
         setNewdata(data)
-    }, [])
+    }, [db])
 
-    //cart data for qty
-    useEffect(() => {
-        getdata.cart()
-            .then((res) => {
-                res.data.map((item)=>{
-                    setCounters(item.products[0].quantity)
-                })
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
+    // cart data for qty
+    // useEffect(() => {
+    //     cartdb.forEach((item) => {
+    //         console.log(item.products[item.id], "nre cart")
+    //     });
 
-    
-     // Initialize counters array with initial values
-     useEffect(() => {
-        const initialCounters = newdata.map(() => 0);
-        setCounters(initialCounters);
-        console.log(initialCounters, "Sedrfswdrf")
-    }, []);
+    // }, [])
 
-     //cart contity inc
-     const handleDecrement = (index) => {
-        if (counters[index] > 0) {
-            const updatedCounters = [...counters];
-            updatedCounters[index] = counters[index] - 1;
-            setCounters(updatedCounters)
+    const handleDecrement = (id) => {
+        if (id == pageid && counters > 0) {
+            console.log(id, "this is id  ")
+            setCounters(counters - 1)
+            updateCart(id, counters)
         }
     }
-    //cart contity dec
-    const handleIncreament = (index) => {
-        if (counters[index] < 10) {
-            const updatedCounters = [...counters];
-            updatedCounters[index] = counters[index] + 1;
-            setCounters(updatedCounters)
+
+    const handleIncreament = (id) => {
+        if (id == pageid && counters < 10) {
+            console.log(id, "this is id  ")
+            setCounters(counters + 1)
+            updateCart(id, counters)
         }
     }
 
     //post cart data....
-    const handleAddtoCart = () => {
-        console.log(newdata[0], "data page is like")
+    const handleAddtoCart = (id, quantity) => {
         if (newdata) {
             navigate("/cart")
-            let postdata = {
-                "id": newdata[0].id,
+            newdata.map((val) => {
+                console.log(val, "Add to  cart -----------------------------------------")
+                const postdata = {
+                    "id": `${val.id}`,
+                    "products": [
+                        {
+                            "id": `${val.id}`,
+                            "title": `${val.title}`,
+                            "price": `${val.price}`,
+                            "quantity": counters,
+                            "total": 60,
+                            "discountPercentage": `${val.discountPercentage}`,
+                            "discountedPrice": 55,
+                            "thumbnail": `${val.thumbnail}`
+                        }
+                    ],
+                    "total": 2328,
+                    "discountedTotal": 1941,
+                    "userId": 97,
+                    "totalProducts": 5,
+                    "totalQuantity": 10
+                }
+                getdata.cartpost(postdata)
+            })
+        }
+
+
+
+    }
+
+    const updateCart = (id, quantity) => {
+        console.log(id,"counter....................",quantity+1)
+        newdata.map((val) => {
+            const obj = {
+                "id": `${val.id}`,
                 "products": [
                     {
-                        "title": newdata[0].title,
-                        "price": newdata[0].price,
-                        "quantity": counters,
+                        "id": `${val.id}`,
+                        "title": `${val.title}`,
+                        "price": `${val.price}`,
+                        "quantity": quantity+1,
                         "total": 60,
-                        "discountPercentage": newdata[0].discountPercentage,
+                        "discountPercentage": `${val.discountPercentage}`,
                         "discountedPrice": 55,
-                        "thumbnail": newdata[0].thumbnail
+                        "thumbnail": `${val.thumbnail}`
                     }
                 ],
                 "total": 2328,
                 "discountedTotal": 1941,
                 "userId": 97,
                 "totalProducts": 5,
-                "totalQuantity": 10
-            }
-            getdata.cartpost(postdata)
+                "totalQuantity": 10 
         }
+        getdata.cartpatch(id, obj)
+            .then((res) => {
+                console.log(res.data, "cart2");
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        })
     }
+
+    //cart data for qty
+    // useEffect(() => {
+    //     getdata.cart()
+    //         .then((res) => {
+    //             console.log(res.data,"res")
+    //             const newCounters = {};
+    //             res.data.forEach((item) => {
+    //             newCounters[item.id] = item.products[0].quantity;
+    //             });
+    //             setCounters(newCounters);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    // }, [])
+
+    //cart contity inc
+    // const handleDecrement = (id) => {
+    //     if (counters[id] > 0) {
+    //         setCounters(prevCounters => {
+    //             const updatedCounters = { ...prevCounters };
+    //             updatedCounters[id] = updatedCounters[id] - 1;
+    //             return updatedCounters;
+    //         });
+    //     }
+    // }
+    // //cart contity dec
+    // const handleIncreament = (id) => {
+    //     if (counters[id] > 0) {
+    //         setCounters(prevCounters => {
+    //             const updatedCounters = { ...prevCounters };
+    //             updatedCounters[id] = updatedCounters[id] + 1;
+    //             return updatedCounters;
+    //         });
+    //     }
+    // }
+
+
 
     return (
         <>
             {Array.isArray(newdata) ? (
-                newdata.map((val,index) => {
+                newdata.map((val, index) => {
                     return (
                         <>
                             <Container fluid key={index}>
@@ -174,11 +246,11 @@ const ProductPage = ({ db, setDb }) => {
 
                                             <div className='productpagecarqty'>
                                                 <div>
-                                                    <button onClick={() => handleDecrement(index)}>-</button>
-                                                    <div>{counters[index]}</div>
-                                                    <button onClick={() => handleIncreament(index)}>+</button>
+                                                    <button onClick={() => handleDecrement(val.id)}>-</button>
+                                                    <div>{counters}</div>
+                                                    <button onClick={() => handleIncreament(val.id)}>+</button>
                                                 </div>
-                                                <button className='productpagebtn' onClick={() => { handleAddtoCart() }}>Add to cart</button>
+                                                <button className='productpagebtn' onClick={() => { handleAddtoCart(val.id, counters) }}>Add to cart</button>
                                                 <button className='productpagebtn'>Buy Now</button>
                                             </div>
                                         </Row>

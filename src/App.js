@@ -6,10 +6,11 @@ import Body from './Layout/Layout1/Body';
 function App() {
 
   const [db, setDb] = useState([])
+  const [cartdb, setCartdb] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-  console.log(db, "DB")
+  console.log(db, "DB",cartdb,"cart")
 
   useEffect(() => {
     setLoading(false)
@@ -24,12 +25,21 @@ function App() {
       })
   }, [])
 
+  useEffect(() => {
+    getdata.cart().then((res) => {
+      setCartdb(res.data)
+    })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
   return (
     <div>
       <HeroNav db={db} setDb={setDb} />
       {
         error ? (<h1>{error}</h1>) : (loading ? (
-          <Body db={db} setDb={setDb} />
+          <Body db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb}/>
         ) : (<h1>loading.......</h1>))
       }
     </div >

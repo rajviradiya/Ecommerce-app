@@ -10,7 +10,7 @@ import SkinCare from './Fiilter/SkinCare'
 import ProductPage from './ProductPage/ProductPage'
 import Cart from './Cart/Cart'
 
-const Rout = ({ db, setDb }) => {
+const Rout = ({ db, setDb, cartdb ,setCartdb}) => {
     return (
         <>
             <BrowserRouter>
@@ -22,9 +22,9 @@ const Rout = ({ db, setDb }) => {
                         <Route path='laptop' element={<Laptop db={db} setDb={setDb} />} />
                         <Route path='fragrances' element={<Fragrances db={db} setDb={setDb} />} />
                         <Route path='skincare' element={<SkinCare db={db} setDb={setDb} />} />
-                        <Route path='productpage/:id' element={<ProductPage db={db} setDb={setDb} />} />
+                        <Route path='productpage/:id' element={<ProductPage db={db} setDb={setDb}  cartdb={cartdb} setCartdb={setCartdb}/>} />
                     </Route>
-                    <Route path='/cart' element={<Cart db={db} setDb={setDb} />} />
+                    <Route path='/cart' element={<Cart db={db} setDb={setDb}  cartdb={cartdb} setCartdb={setCartdb}/>} />
                 </Routes>
             </BrowserRouter>
         </>

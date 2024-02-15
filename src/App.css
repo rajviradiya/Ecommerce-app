@@ -200,13 +200,20 @@
 }
 
 .carttotal{
-  width: 12% !important;
+  width: 20% !important;
   margin-top: 30px;
+  text-align: center;
 }
 
-.carttotal div{
-  display: flex !important;
-  flex-direction: column;
+.carttotal div div {
+   display: flex;
+    justify-content: space-around;
+    margin-top: 15px !important;
+}
+
+.carttotal div div button {
+  width: 100px !important;
+  
 }
 
 /* Cart card */

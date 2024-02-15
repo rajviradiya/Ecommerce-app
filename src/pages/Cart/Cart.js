@@ -19,7 +19,8 @@ const Cart = () => {
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
+    }, [setcartdb])
+
 
     return (
         <Container fluid className='p-0'>
@@ -39,13 +40,16 @@ const Cart = () => {
                 </Row>
                 <Row className='cartcardss'>
                     <div>
-                        <CartCard data={cartdb} />
+                        <CartCard data={cartdb} setcartdb={setcartdb} />
                     </div>
                 </Row>
                 <Row className='carttotal'>
                     <div>
                         <h5>Cart Total :220rs</h5>
-                        <button className='btn btn-primary'>CHECKOUT</button>
+                        <div>
+                            <button className='btn btn-primary'>CHECKOUT</button>
+                            <button className='btn btn-primary'>CHECKOUT</button>
+                        </div>
                     </div>
                 </Row>
             </Col>
