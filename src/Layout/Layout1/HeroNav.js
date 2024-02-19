@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
-import Cart from '../../pages/Cart/Cart';
+import { Link, useNavigate } from 'react-router-dom';
 
-const HeroNav = ({ db, setDb }) => {
+const HeroNav = ({ db, setDb, cartdb, setCartdb }) => {
 
-    const [products, setProducts] = useState([]);
     const [inputval, setInputval] = useState("")
-
-    console.log(products, "search")
-    useEffect(() => {
-        setProducts(db)
-    })
+    console.log(inputval, "search")
 
     const handleInput = (element) => {
-        setInputval(element.value.toLowerCase()
-        )
+            setInputval(element.value.toLowerCase())
+            const data = db.filter((item) => {
+                return item.title.toLowerCase().includes(element.value.toLowerCase())
+            })
+            setDb(data)
     }
 
     const handleSearch = () => {
-        const data = products.filter((item) => {
+        const data = db.filter((item) => {
             return item.title.toLowerCase().includes(inputval)
         })
         setDb(data)
     }
 
-    const handleOnclick = ()=>{
-      
-    }
     return (
         <Navbar expand="lg" className="bg-body-tertiary heronav">
             <Container fluid>
@@ -37,12 +32,13 @@ const HeroNav = ({ db, setDb }) => {
                         placeholder="Search"
                         className="me-2 "
                         aria-label="Search"
+                        value={inputval}
                         onChange={(e) => { handleInput(e.target) }}
                     />
                     <Button variant="outline-success" className='navsearchbtn' onClick={() => { handleSearch() }}>Search</Button>
                 </Form>
                 <div>
-                    <button onClick={()=>{handleOnclick()}}><i className="fa-solid fa-cart-shopping text-danger pe-4 "></i></button>
+                    <Link to="/cart"><button className=' p-2 me-5 bg-transparent shadow-lg'><i className="fa-solid fa-cart-shopping text-white "></i></button></Link>
                 </div>
             </Container>
         </Navbar>

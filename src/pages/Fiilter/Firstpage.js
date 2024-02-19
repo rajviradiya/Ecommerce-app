@@ -4,9 +4,9 @@ import { Container } from 'react-bootstrap'
 
 const Firstpage = ({db,setDb}) => {
     return (
-       <Container fluid> 
+       <> 
        <CatagoryCard db={db} setDb={setDb}/>
-       </Container>
+       </>
     )
 }
 

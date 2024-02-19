@@ -1,17 +1,20 @@
 import { getdata } from "./Utils/axios"
 import { useEffect, useState } from 'react';
-import HeroNav from './Layout/Layout1/HeroNav';
-import Body from './Layout/Layout1/Body';
+import Cart from "./pages/Cart/Cart";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Firstpage from "./pages/Fiilter/Firstpage";
+import ProductPage from "./pages/ProductPage/ProductPage";
+import RouteWrapper from "./pages/Components/RouteWrapper";
+import FilterProduct from "./pages/Fiilter/FilterProduct";
 
 function App() {
-
-  const [db, setDb] = useState([])
-  const [cartdb, setCartdb] = useState([])
+  const [db, setDb] = useState([])//Product DB
+  const [cartdb, setCartdb] = useState([])//cart DB
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-  console.log(db, "DB",cartdb,"cart")
-
+  console.log(db, "DB", cartdb, "cart")
+  //Product
   useEffect(() => {
     setLoading(false)
     getdata.data()
@@ -25,6 +28,7 @@ function App() {
       })
   }, [])
 
+  //Cart
   useEffect(() => {
     getdata.cart().then((res) => {
       setCartdb(res.data)
@@ -35,14 +39,34 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <HeroNav db={db} setDb={setDb} />
-      {
-        error ? (<h1>{error}</h1>) : (loading ? (
-          <Body db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb}/>
-        ) : (<h1>loading.......</h1>))
-      }
-    </div >
+    <>
+      <BrowserRouter>
+        <Routes>
+
+          <Route path='/' element={
+            <RouteWrapper db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} error={error} loading={loading}>
+              <Firstpage db={db} setDb={setDb} />
+            </RouteWrapper>
+          } />
+          <Route path='/:category' element={
+            <RouteWrapper db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} error={error} loading={loading}>
+                <FilterProduct db={db} setDb={setDb} />
+            </RouteWrapper>
+          } />
+          <Route path='/productpage/:id' element={
+            <RouteWrapper db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} error={error} loading={loading}>
+              <ProductPage db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} />
+            </RouteWrapper>
+          } />
+          <Route path="/cart" element={
+            <RouteWrapper db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} error={error} loading={loading}>
+              <Cart cartdb={cartdb} setCartdb={setCartdb} />
+            </RouteWrapper>
+          } />
+        </Routes>
+
+      </BrowserRouter>
+    </>
   );
 }
 

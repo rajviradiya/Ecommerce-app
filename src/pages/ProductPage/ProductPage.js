@@ -7,9 +7,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import { getdata } from '../../Utils/axios';
 
 const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
-    const [newdata, setNewdata] = useState([]);
-    const [addtocart, setAddtocart] = useState([])
 
+    const [newdata, setNewdata] = useState([]);
     const [counters, setCounters] = useState(0);
     const [pageid, setpageId] = useState(1)
 
@@ -17,8 +16,8 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
     //pase detail page data using routing
     const navigate = useNavigate();
 
-    console.log(counters, "counter")
-    console.log(pageid, "newdata2")
+    console.log(newdata.length > 0 ? newdata[0].id : null, "product111");
+
 
     //set state using passed props 
     useEffect(() => {
@@ -57,40 +56,42 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
 
     //post cart data....
     const handleAddtoCart = (id, quantity) => {
-        if (newdata) {
+        if (newdata && newdata.length > 0) {
             navigate("/cart")
-            newdata.map((val) => {
-                console.log(val, "Add to  cart -----------------------------------------")
-                const postdata = {
-                    "id": `${val.id}`,
-                    "products": [
-                        {
-                            "id": `${val.id}`,
-                            "title": `${val.title}`,
-                            "price": `${val.price}`,
-                            "quantity": counters,
-                            "total": 60,
-                            "discountPercentage": `${val.discountPercentage}`,
-                            "discountedPrice": 55,
-                            "thumbnail": `${val.thumbnail}`
-                        }
-                    ],
-                    "total": 2328,
-                    "discountedTotal": 1941,
-                    "userId": 97,
-                    "totalProducts": 5,
-                    "totalQuantity": 10
+            newdata.forEach((val) => {
+                const productInCart = cartdb.find(item => item.products.some(p => p.id === val.id));
+                if (!productInCart) {
+                    const postdata = {
+                        "id": `${val.id}`,
+                        "products": [
+                            {
+                                "id": `${val.id}`,
+                                "title": `${val.title}`,
+                                "price": `${val.price}`,
+                                "quantity": counters,
+                                "total": 60,
+                                "discountPercentage": `${val.discountPercentage}`,
+                                "discountedPrice": 55,
+                                "thumbnail": `${val.thumbnail}`
+                            }
+                        ],
+                        "total": 2328,
+                        "discountedTotal": 1941,
+                        "userId": 97,
+                        "totalProducts": 5,
+                        "totalQuantity": 10
+                    }
+                    getdata.cartpost(postdata)
+                    setCartdb(prevData => [...prevData, postdata]);
+                } else {
+                    console.log(`Product with ID ${val.id} already exists in the cart.`);
                 }
-                getdata.cartpost(postdata)
             })
         }
-
-
-
     }
 
     const updateCart = (id, quantity) => {
-        console.log(id,"counter....................",quantity+1)
+        console.log(id, "counter....................", quantity + 1)
         newdata.map((val) => {
             const obj = {
                 "id": `${val.id}`,
@@ -99,7 +100,7 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
                         "id": `${val.id}`,
                         "title": `${val.title}`,
                         "price": `${val.price}`,
-                        "quantity": quantity+1,
+                        "quantity": quantity + 1,
                         "total": 60,
                         "discountPercentage": `${val.discountPercentage}`,
                         "discountedPrice": 55,
@@ -110,15 +111,15 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
                 "discountedTotal": 1941,
                 "userId": 97,
                 "totalProducts": 5,
-                "totalQuantity": 10 
-        }
-        getdata.cartpatch(id, obj)
-            .then((res) => {
-                console.log(res.data, "cart2");
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                "totalQuantity": 10
+            }
+            getdata.cartpatch(id, obj)
+                .then((res) => {
+                    console.log(res.data, "cart2");
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         })
     }
 
@@ -138,27 +139,7 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
     //         })
     // }, [])
 
-    //cart contity inc
-    // const handleDecrement = (id) => {
-    //     if (counters[id] > 0) {
-    //         setCounters(prevCounters => {
-    //             const updatedCounters = { ...prevCounters };
-    //             updatedCounters[id] = updatedCounters[id] - 1;
-    //             return updatedCounters;
-    //         });
-    //     }
-    // }
-    // //cart contity dec
-    // const handleIncreament = (id) => {
-    //     if (counters[id] > 0) {
-    //         setCounters(prevCounters => {
-    //             const updatedCounters = { ...prevCounters };
-    //             updatedCounters[id] = updatedCounters[id] + 1;
-    //             return updatedCounters;
-    //         });
-    //     }
-    // }
-
+    
 
 
     return (

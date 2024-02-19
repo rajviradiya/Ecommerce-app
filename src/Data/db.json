@@ -606,17 +606,17 @@
   ],
   "carts": [
     {
-      "id": "7",
+      "id": "18",
       "products": [
         {
-          "id": "7",
-          "title": "Samsung Galaxy Book",
-          "price": "1499",
-          "quantity": 3,
+          "id": "18",
+          "title": "Oil Free Moisturizer 100ml",
+          "price": "40",
+          "quantity": 0,
           "total": 60,
-          "discountPercentage": "4.15",
+          "discountPercentage": "13.1",
           "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+          "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg"
         }
       ],
       "total": 2328,
@@ -626,17 +626,17 @@
       "totalQuantity": 10
     },
     {
-      "id": "11",
+      "id": "17",
       "products": [
         {
-          "id": "11",
-          "title": "perfume Oil",
-          "price": "13",
-          "quantity": 3,
+          "id": "17",
+          "title": "Tree Oil 30ml",
+          "price": "12",
+          "quantity": 0,
           "total": 60,
-          "discountPercentage": "8.4",
+          "discountPercentage": "4.09",
           "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg"
+          "thumbnail": "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg"
         }
       ],
       "total": 2328,
@@ -646,17 +646,17 @@
       "totalQuantity": 10
     },
     {
-      "id": "11",
+      "id": "24",
       "products": [
         {
-          "id": "11",
-          "title": "perfume Oil",
-          "price": "13",
-          "quantity": 3,
+          "id": "24",
+          "title": "cereals muesli fruit nuts",
+          "price": "46",
+          "quantity": 0,
           "total": 60,
-          "discountPercentage": "8.4",
+          "discountPercentage": "16.8",
           "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg"
+          "thumbnail": "https://cdn.dummyjson.com/product-images/24/thumbnail.jpg"
         }
       ],
       "total": 2328,
