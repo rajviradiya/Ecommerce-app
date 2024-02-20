@@ -606,64 +606,79 @@
   ],
   "carts": [
     {
-      "id": "18",
-      "products": [
-        {
-          "id": "18",
-          "title": "Oil Free Moisturizer 100ml",
-          "price": "40",
-          "quantity": 0,
-          "total": 60,
-          "discountPercentage": "13.1",
-          "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg"
-        }
-      ],
-      "total": 2328,
-      "discountedTotal": 1941,
-      "userId": 97,
-      "totalProducts": 5,
-      "totalQuantity": 10
-    },
-    {
       "id": "17",
       "products": [
         {
           "id": "17",
-          "title": "Tree Oil 30ml",
-          "price": "12",
-          "quantity": 0,
-          "total": 60,
-          "discountPercentage": "4.09",
-          "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg"
+          "quantity": 35,
+          "total": 2328
         }
       ],
-      "total": 2328,
-      "discountedTotal": 1941,
+      "total": 11640,
+      "discountedTotal": null,
       "userId": 97,
       "totalProducts": 5,
-      "totalQuantity": 10
+      "totalQuantity": null
     },
     {
       "id": "24",
       "products": [
         {
           "id": "24",
-          "title": "cereals muesli fruit nuts",
-          "price": "46",
-          "quantity": 0,
-          "total": 60,
-          "discountPercentage": "16.8",
-          "discountedPrice": 55,
-          "thumbnail": "https://cdn.dummyjson.com/product-images/24/thumbnail.jpg"
+          "quantity": 35,
+          "total": 2328
         }
       ],
-      "total": 2328,
-      "discountedTotal": 1941,
+      "total": 20952,
+      "discountedTotal": null,
       "userId": 97,
       "totalProducts": 5,
-      "totalQuantity": 10
+      "totalQuantity": null
+    },
+    {
+      "id": "22",
+      "products": [
+        {
+          "id": "22",
+          "quantity": 5,
+          "total": 76824
+        }
+      ],
+      "total": 114072,
+      "discountedTotal": null,
+      "userId": 97,
+      "totalProducts": 5,
+      "totalQuantity": null
+    },
+    {
+      "id": "23",
+      "products": [
+        {
+          "id": "23",
+          "quantity": 1,
+          "total": 2328
+        }
+      ],
+      "total": 151320,
+      "discountedTotal": null,
+      "userId": 97,
+      "totalProducts": 5,
+      "totalQuantity": null
+    },
+    {
+      "id": "33",
+      "products": [
+        {
+          "id": "33",
+          "quantity": 6,
+          "total": 2328
+        }
+      ],
+      "total": 300312,
+      "discountedTotal": null,
+      "userId": 97,
+      "totalProducts": 5,
+      "totalQuantity": null
     }
   ],
   "total": 20,

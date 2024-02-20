@@ -16,8 +16,8 @@ const cartpost = async (obj)=>{
    return postdata
 }  
 const cartpatch = async (id,obj)=>{
-   const cartpatch = await axios.patch( `http://localhost:5000/carts/${id}`,obj)
-   return cartpatch
+   const cartpatch = await axios.patch(`http://localhost:5000/carts/${id}`, obj);
+   return cartpatch;
 }
 const cartput = async (id,obj)=>{
    const cartput = await axios.put( `http://localhost:5000/carts/${id}`,obj)

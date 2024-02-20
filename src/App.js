@@ -60,7 +60,7 @@ function App() {
           } />
           <Route path="/cart" element={
             <RouteWrapper db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} error={error} loading={loading}>
-              <Cart cartdb={cartdb} setCartdb={setCartdb} />
+              <Cart db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb}  />
             </RouteWrapper>
           } />
         </Routes>

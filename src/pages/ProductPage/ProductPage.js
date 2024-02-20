@@ -10,46 +10,38 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
 
     const [newdata, setNewdata] = useState([]);
     const [counters, setCounters] = useState(0);
-    const [pageid, setpageId] = useState(1)
 
     const { id } = useParams("");
+    const ids = id;
     //pase detail page data using routing
     const navigate = useNavigate();
-
-    console.log(newdata.length > 0 ? newdata[0].id : null, "product111");
-
 
     //set state using passed props 
     useEffect(() => {
         const data = db.filter((item) => {
-            if (item.id == id) {
-                setpageId(item.id)
-            }
             return item.id == id
         })
         setNewdata(data)
     }, [db])
 
-    // cart data for qty
     // useEffect(() => {
-    //     cartdb.forEach((item) => {
-    //         console.log(item.products[item.id], "nre cart")
+    //     const updatedCounter = cartdb.map((item) => {
+    //         return item.products[0].quantity
     //     });
 
-    // }, [])
+    //     alert(updatedCounter[2])
+    //     setCounters(updatedCounter[2])
+    // }, [cartdb]);
 
     const handleDecrement = (id) => {
-        if (id == pageid && counters > 0) {
-            console.log(id, "this is id  ")
-            setCounters(counters - 1)
+        if (counters < 10) {
+            setCounters(prevCounter => prevCounter - 1)
             updateCart(id, counters)
         }
     }
-
-    const handleIncreament = (id) => {
-        if (id == pageid && counters < 10) {
-            console.log(id, "this is id  ")
-            setCounters(counters + 1)
+    const handleIncreament = (id) => { 
+        if (counters < 10) {
+            setCounters(prevCounter => prevCounter + 1)
             updateCart(id, counters)
         }
     }
@@ -122,25 +114,6 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
                 });
         })
     }
-
-    //cart data for qty
-    // useEffect(() => {
-    //     getdata.cart()
-    //         .then((res) => {
-    //             console.log(res.data,"res")
-    //             const newCounters = {};
-    //             res.data.forEach((item) => {
-    //             newCounters[item.id] = item.products[0].quantity;
-    //             });
-    //             setCounters(newCounters);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    // }, [])
-
-    
-
 
     return (
         <>
@@ -228,7 +201,7 @@ const ProductPage = ({ db, setDb, cartdb, setCartdb }) => {
                                             <div className='productpagecarqty'>
                                                 <div>
                                                     <button onClick={() => handleDecrement(val.id)}>-</button>
-                                                    <div>{counters}</div>
+                                                    <div>{counters }</div>   
                                                     <button onClick={() => handleIncreament(val.id)}>+</button>
                                                 </div>
                                                 <button className='productpagebtn' onClick={() => { handleAddtoCart(val.id, counters) }}>Add to cart</button>

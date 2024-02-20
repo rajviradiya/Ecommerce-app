@@ -4,24 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import { getdata } from "../../Utils/axios"
 
-const Cart = () => {
-
-    const [cartdb, setcartdb] = useState([])
-    const [err, setErr] = useState("")
-
-    console.log(cartdb, "cart")
-
-    //get cart data
-    useEffect(() => {
-        getdata.cart().then((res) => {
-            setcartdb(res.data)
-        })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [setcartdb])
-
-
+const Cart = ({db, setDb, cartdb, setCartdb }) => {
     return (
         <Container fluid className='p-0'>
             <Col className='cart p-0'>
@@ -40,7 +23,7 @@ const Cart = () => {
                 </Row>
                 <Row className='cartcardss'>
                     <div>
-                        <CartCard data={cartdb} setcartdb={setcartdb} />
+                        <CartCard db={db} setDb={setDb} cartdb={cartdb} setCartdb={setCartdb} />
                     </div>
                 </Row>
                 <Row className='carttotal'>
